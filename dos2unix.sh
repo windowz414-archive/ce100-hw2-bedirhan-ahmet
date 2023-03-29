@@ -57,7 +57,7 @@ done
 # Let's commit it now!
 git add .
 if [ -z "$(git diff-index --quiet HEAD)" ]; then
-    git commit -s -m "[Beru no CI] CE100-HW1: Switch all files to UNIX format"
+    git commit -s -m "[Beru no CI] CE100-HW2: Switch all files to UNIX format"
     git push
 fi
 

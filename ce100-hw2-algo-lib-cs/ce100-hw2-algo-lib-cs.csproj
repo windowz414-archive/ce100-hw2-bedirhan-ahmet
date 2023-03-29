@@ -7,8 +7,8 @@
     <ProjectGuid>{CB59E21D-0C93-46FA-9035-09A95DDB0CAD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ce100_hw2_bedirhan_ahmet</RootNamespace>
-    <AssemblyName>ce100-hw2-bedirhan-ahmet</AssemblyName>
+    <RootNamespace>ce100_hw2_algo_lib_cs</RootNamespace>
+    <AssemblyName>ce100-hw2-algo-lib-cs</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

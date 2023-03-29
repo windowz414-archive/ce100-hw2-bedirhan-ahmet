@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ce100_hw2_algo_lib_cs
 {
-    public class Class1
+    public class ce100_hw2_algo_lib_cs
     {
     }
 }

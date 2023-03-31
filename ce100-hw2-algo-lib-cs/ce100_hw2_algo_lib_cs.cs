@@ -17,66 +17,55 @@ namespace ce100_hw2_algo_lib_cs
         /**
          * This function sorts an array of integers using heap sort method.
          * 
-         * @param inputArray The input array that needs to be sorted.
-         * @param outputArray The array that will contain the sorted elements after the method is executed.
-         * @return -1 if there's something wrong with parameters, 0 if the function runs successfully.
+         * @param array The input array that needs to be sorted.
+         * @return Sorted array of integers.
          */
-        public static int heapSort(int[] inputArray, int[] outputArray)
+        public static int[] HeapSort(int[] array)
         {
-            if (inputArray == null || outputArray == null || inputArray.Length != outputArray.Length)
+            // Build heap
+            for (int i = (array.Length - 1) / 2; i >= 0; i--)
             {
-                return -1; // Return -1 if inputArray or outputArray is null or their lengths don't match.
+                Heapify(array, array.Length, i);
             }
 
-            int n = inputArray.Length;
-
-            // Build max heap
-            for (int i = n / 2 - 1; i >= 0; i--)
+            // Sort heap
+            for (int i = array.Length - 1; i >= 1; i--)
             {
-                heapify(inputArray, n, i);
+                Swap(array, 0, i);
+                Heapify(array, i, 0);
             }
 
-            // Extract elements from heap one by one
-            for (int i = n - 1; i >= 0; i--)
-            {
-                outputArray[i] = inputArray[0];
-                inputArray[0] = inputArray[i];
-                heapify(inputArray, i, 0);
-            }
-
-            return 0; // Return 0 if the function is successful.
+            return array;
         }
 
-        // Helper function for heapSort. This MUST NOT be documented!
-        private static void heapify(int[] arr, int n, int i)
+        private static void Heapify(int[] array, int size, int index)
         {
-            int largest = i; // Initialize largest as root
-            int l = 2 * i + 1; // Left child
-            int r = 2 * i + 2; // Right child
+            int leftChild = 2 * index + 1;
+            int rightChild = 2 * index + 2;
+            int largest = index;
 
-            // If left child is larger than root
-            if (l < n && arr[l] > arr[largest])
+            if (leftChild < size && array[leftChild] > array[largest])
             {
-                largest = l;
+                largest = leftChild;
             }
 
-            // If right child is larger than largest so far
-            if (r < n && arr[r] > arr[largest])
+            if (rightChild < size && array[rightChild] > array[largest])
             {
-                largest = r;
+                largest = rightChild;
             }
 
-            // If largest is not root
-            if (largest != i)
+            if (largest != index)
             {
-                int temp = arr[i];
-                arr[i] = arr[largest];
-                arr[largest] = temp;
-
-                // Recursively heapify the affected sub-tree
-                heapify(arr, n, largest);
+                Swap(array, index, largest);
+                Heapify(array, size, largest);
             }
         }
 
+        private static void Swap(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
 }

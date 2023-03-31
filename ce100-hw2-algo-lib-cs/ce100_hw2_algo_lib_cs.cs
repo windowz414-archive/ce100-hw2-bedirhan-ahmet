@@ -117,5 +117,38 @@ namespace ce100_hw2_algo_lib_cs
             // Return the minimum number of scalar multiplications required to compute A[1..n].
             return m[0, n - 1];
         }
+
+        /**
+         * Computes the length of the longest common subsequence between two strings using dynamic programming.
+         * 
+         * @param s1 The first input string.
+         * @param s2 The second input string.
+         * @return The length of the longest common subsequence between `s1` and `s2`.
+         */
+        public static int LongestCommonSubsequence(string s1, string s2)
+        {
+            int[,] lengths = new int[s1.Length + 1, s2.Length + 1];
+
+            for (int i = 0; i <= s1.Length; i++)
+            {
+                for (int j = 0; j <= s2.Length; j++)
+                {
+                    if (i == 0 || j == 0)
+                    {
+                        lengths[i, j] = 0;
+                    }
+                    else if (s1[i - 1] == s2[j - 1])
+                    {
+                        lengths[i, j] = lengths[i - 1, j - 1] + 1;
+                    }
+                    else
+                    {
+                        lengths[i, j] = Math.Max(lengths[i - 1, j], lengths[i, j - 1]);
+                    }
+                }
+            }
+
+            return lengths[s1.Length, s2.Length];
+        }
     }
 }

@@ -74,5 +74,15 @@ namespace ce100_hw2_algo_test_cs
             // Verify the result.
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void LongestCommonSubsequenceTest()
+        {
+            string s1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non nulla at purus ullamcorper bibendum.";
+            string s2 = "Praesent eu felis in diam finibus imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.";
+            int expected = 47;
+            int result = LongestCommonSubsequence(s1, s2);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

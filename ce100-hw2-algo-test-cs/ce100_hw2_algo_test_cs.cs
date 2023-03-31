@@ -58,5 +58,21 @@ namespace ce100_hw2_algo_test_cs
                 }
             }
         }
+
+        [TestMethod]
+        public void MatrixChainOrderTest()
+        {
+            // Test input.
+            int[] p = new int[] { 5, 10, 3, 12, 5, 50, 6 };
+
+            // Expected output.
+            int expected = 2010;
+
+            // Actual output.
+            int actual = MatrixChainOrderDP(p);
+
+            // Verify the result.
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

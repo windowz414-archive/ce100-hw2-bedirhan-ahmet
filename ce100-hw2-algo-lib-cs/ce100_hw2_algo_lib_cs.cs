@@ -67,5 +67,46 @@ namespace ce100_hw2_algo_lib_cs
             array[i] = array[j];
             array[j] = temp;
         }
+
+        public static int MatrixChainOrderDP(int[] p)
+        {
+            int n = p.Length - 1;
+
+            // m[i,j] stores the minimum number of scalar multiplications required to compute A[i..j].
+            int[,] m = new int[n, n];
+
+            // s[i,j] stores the index that splits the product A[i..j] into two subproducts.
+            int[,] s = new int[n, n];
+
+            // Initialize m[i,i] to 0 for all i.
+            for (int i = 0; i < n; i++)
+            {
+                m[i, i] = 0;
+            }
+
+            // Compute m[i,j] and s[i,j] for all i < j.
+            for (int L = 2; L <= n; L++)
+            {
+                for (int i = 0; i < n - L + 1; i++)
+                {
+                    int j = i + L - 1;
+                    m[i, j] = int.MaxValue;
+
+                    for (int k = i; k < j; k++)
+                    {
+                        int q = m[i, k] + m[k + 1, j] + p[i] * p[k + 1] * p[j + 1];
+
+                        if (q < m[i, j])
+                        {
+                            m[i, j] = q;
+                            s[i, j] = k;
+                        }
+                    }
+                }
+            }
+
+            // Return the minimum number of scalar multiplications required to compute A[1..n].
+            return m[0, n - 1];
+        }
     }
 }

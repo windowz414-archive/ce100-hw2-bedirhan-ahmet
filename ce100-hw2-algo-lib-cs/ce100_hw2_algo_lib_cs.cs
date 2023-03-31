@@ -38,6 +38,7 @@ namespace ce100_hw2_algo_lib_cs
             return array;
         }
 
+        // Helper function for HeapSort. This MUST NOT be documented!
         private static void Heapify(int[] array, int size, int index)
         {
             int leftChild = 2 * index + 1;
@@ -61,6 +62,7 @@ namespace ce100_hw2_algo_lib_cs
             }
         }
 
+        // Helper function for HeapSort and Heapify. This MUST NOT be documented!
         private static void Swap(int[] array, int i, int j)
         {
             int temp = array[i];
@@ -68,6 +70,13 @@ namespace ce100_hw2_algo_lib_cs
             array[j] = temp;
         }
 
+        /**
+         * This function calculates the minimum number of scalar multiplications required to multiply the matrices
+         * together in the given order.
+         * 
+         * @param p An array that represents the dimensions of n matrices.
+         * @return Minimum number of scalar multiplications required to multiply the matrices together in the given order.
+         */
         public static int MatrixChainOrderDP(int[] p)
         {
             int n = p.Length - 1;

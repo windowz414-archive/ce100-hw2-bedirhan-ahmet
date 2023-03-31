@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ce100_hw2_algo_lib_cs
 {
-    public class ce100_hw2_algo_lib_cs
+    public class ce100_hw2_algo_lib
     {
         /**
          * This function sorts an array of integers using heap sort method.

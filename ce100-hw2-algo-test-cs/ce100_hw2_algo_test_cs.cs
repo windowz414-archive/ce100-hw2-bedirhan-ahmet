@@ -84,5 +84,17 @@ namespace ce100_hw2_algo_test_cs
             int result = LongestCommonSubsequence(s1, s2);
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestKnapsackProblem()
+        {
+            int W = 50;
+            int[] wt = new int[] { 10, 20, 30 };
+            int[] val = new int[] { 60, 100, 120 };
+            int n = val.Length;
+            int expected = 220;
+            int result = KnapsackProblem(W, wt, val, n);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

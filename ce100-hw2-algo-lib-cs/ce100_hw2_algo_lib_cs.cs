@@ -150,5 +150,36 @@ namespace ce100_hw2_algo_lib_cs
 
             return lengths[s1.Length, s2.Length];
         }
+
+        /**
+         * Computes the maximum value that can be obtained by filling a knapsack with a given weight capacity.
+         * @brief 0-1 Knapsack problem using dynamic programming.
+         * 
+         * @param W The maximum weight capacity of the knapsack.
+         * @param wt An array of item weights.
+         * @param val An array of item values.
+         * @param n The number of items.
+         * @return The maximum value that can be obtained by filling the knapsack with items.
+         */
+        public static int KnapsackProblem(int W, int[] wt, int[] val, int n)
+        {
+            int[,] K = new int[n + 1, W + 1];
+
+            // Build table K[][] in bottom up manner
+            for (int i = 0; i <= n; i++)
+            {
+                for (int w = 0; w <= W; w++)
+                {
+                    if (i == 0 || w == 0)
+                        K[i, w] = 0;
+                    else if (wt[i - 1] <= w)
+                        K[i, w] = Math.Max(val[i - 1] + K[i - 1, w - wt[i - 1]], K[i - 1, w]);
+                    else
+                        K[i, w] = K[i - 1, w];
+                }
+            }
+
+            return K[n, W];
+        }
     }
 }
